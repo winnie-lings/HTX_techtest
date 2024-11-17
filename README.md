@@ -62,9 +62,12 @@ Once activated, your prompt should change to indicate the active environment, fo
 
 #### 2. In the new conda environment, clone the repository and install the dependencies necessary for all the tasks
 
-Ensure you are in the task directory where requirements.txt is located.
+a) If Git is not installed in your system, install using: 
 
-a) If Git is not installed in your system, you can download from https://git-scm.com/downloads and verify the installation by running:
+```bash
+conda install git
+```
+b) Verify the installation by running:
 
 ```bash
 git --version
@@ -72,7 +75,7 @@ git --version
 
 This will show the installed version of Git, e.g., git version 2.x.x.
 
-b) Navigate to the directory where you want to clone the repository and clone it
+c) Navigate to the directory where you want to clone the repository and clone it
 
 ```bash
 cd /path/to/your/task
@@ -80,7 +83,9 @@ cd /path/to/your/task
 git clone https://github.com/winnie-lings/HTX_techtest.git
 ```
 
-c) Install the dependencies
+d) Install the dependencies
+
+Make sure that you are in the path where the requirement.txt file is located
 
 ```bash
 pip install -r requirements.txt
@@ -153,7 +158,7 @@ Step-by-step guide to using Postman:
 
 #### 5. Transcribe the 4,076 common-voice mp3 files under cv-valid-dev folder (Task 2d)
 
-The script cv-decode.py will call the ASR API for all the audio files in the cv-valid-dev folder and write the transcriptions into a new column (generated_text) in the cv-valid-dev.csv.
+The script cv-decode.py will call the ASR API for all the audio files in the cv-valid-dev folder and write the transcriptions into a new column (generated_text) in the cv-valid-dev.csv. You will need to edit the file paths for the audio files in cv-decode.py.
 
 To run the transcription script:
 
@@ -179,6 +184,9 @@ b) Run the Docker container
 docker run -p 8001:8001 asr-api
 ```
 
+Repeat 4a and b to test the dockerised application.
+
+
 #### 7. Fine-tune the ASR Model (Task 3 - asr-train/cv-train-2a.ipynb)
 
 The fine-tuning of the wav2vec2-large-960h ASR model is done in the Jupyter Notebook, cv-train-2a.ipynb using cv-valid-train dataset.
@@ -199,11 +207,11 @@ The fine-tuned model is saved as wav2vec2-large-960h-cv (Task 3b). After trainin
 
 a) Detect hot words in transcriptions
 
-Please refer to cv-hotword-5a.ipynb notebook to detect hotwords such as "be careful", "destroy", and "stranger", with the list of mp3 filenames with the hot words detected stored in detected.txt
+Please refer to cv-hotword-5a.ipynb notebook for instructions and codes to detect hotwords such as "be careful", "destroy", and "stranger", with the list of mp3 filenames with the hot words detected stored in detected.txt
 
 b) Find similar phrases to the hot words using text embedding model hkunlp/instructor-large
 
-Please refer to cv-hotword-similarity-5b.ipynb notebook for this task. The record containing similar phrases to the hot words is stored as a Boolean in a new column called 'similarity' in cv-valid-dev.csv. 
+Please refer to cv-hotword-similarity-5b.ipynb notebook for instructions and codes for this task. The record containing similar phrases to the hot words is stored as a Boolean in a new column called 'similarity' in cv-valid-dev.csv. 
 
 #### 9. Deactivate Conda environment once done
 
