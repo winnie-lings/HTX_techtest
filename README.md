@@ -43,19 +43,13 @@ conda --version
 
 #### 1. Set up a new conda environment and activate it to run the following codes
 
-a) Navigate to the main task folder (where README.md file resides):
-
-```bash
-cd /path/to/your/task
-```
-
-b) Create a new Conda environment. You can specify a Python version (e.g., Python 3.8) to match the dependencies required for the tasks. Here, python version used is 3.8.20. You may wish to replace myenv with your own name for the environment. 
+a) Create a new Conda environment. You can specify a Python version (e.g., Python 3.8) to match the dependencies required for the tasks. Here, python version used is 3.8.20. You may wish to replace myenv with your own name for the environment. 
 
 ```bash
 conda create --name myenv python=3.8
 ```
 
-c) Activate the environment:
+b) Activate the environment:
 
 ```bash
 conda activate myenv
